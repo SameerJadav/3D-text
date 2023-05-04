@@ -1,7 +1,11 @@
+import { Cube } from "~/components/Objects";
+
 export default function Home() {
   return (
     <main>
-      <p>Hello world!</p>
+      <div className="h-screen w-screen">
+        <Cube />
+      </div>
     </main>
   );
 }
