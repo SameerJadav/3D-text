@@ -1,8 +1,9 @@
 "use client";
-import { Canvas } from "@react-three/fiber";
+
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Text3D, Center } from "@react-three/drei";
 
-export function Cube() {
+export default function Experience() {
   const meshNormalMaterial = <meshNormalMaterial wireframe />;
 
   const generateMeshes = (meshType: string, length: number) => {
@@ -22,7 +23,7 @@ export function Cube() {
           {(() => {
             switch (meshType) {
               case "torus":
-                return <torusBufferGeometry args={[0.3, 0.1, 20, 40]} />;
+                return <torusBufferGeometry args={[0.3, 0.1, 10, 25]} />;
               case "box":
                 return <boxBufferGeometry args={[0.3, 0.3, 0.3, 4, 4, 4]} />;
               case "sphere":
@@ -43,7 +44,7 @@ export function Cube() {
 
   return (
     <Canvas
-      camera={{ position: [1, -1, 6], fov: 45 }}
+      camera={{ position: [1, -1, 6.5], fov: 45 }}
       className="bg-neutral-950"
     >
       <OrbitControls
@@ -54,7 +55,6 @@ export function Cube() {
       <Center>
         <Text3D
           font="/fonts/helvetiker_regular.typeface.json"
-          // letterSpacing={0.025}
           size={0.5}
           height={0.2}
           curveSegments={5}
