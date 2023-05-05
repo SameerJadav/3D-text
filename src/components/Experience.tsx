@@ -1,7 +1,7 @@
 "use client";
 
-import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, Text3D, Center } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Text3D, Center, Float } from "@react-three/drei";
 
 export default function Experience() {
   const meshNormalMaterial = <meshNormalMaterial wireframe />;
@@ -10,37 +10,46 @@ export default function Experience() {
     return Array.from({ length }, (_, i) => {
       let randomSize = Math.random();
       return (
-        <mesh
+        <Float
           key={i}
-          position={[
-            (Math.random() - 0.5) * 13,
-            (Math.random() - 0.5) * 13,
-            (Math.random() - 0.5) * 13,
-          ]}
-          rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
-          scale={[randomSize, randomSize, randomSize]}
+          position={[0, 0.6, 0]}
+          rotation={[Math.PI * 0.25, Math.PI * 0.25, 0]}
+          rotationIntensity={0.5}
+          floatIntensity={0.5}
+          speed={0.75}
         >
-          {(() => {
-            switch (meshType) {
-              case "torus":
-                return <torusBufferGeometry args={[0.3, 0.1, 10, 25]} />;
-              case "box":
-                return <boxBufferGeometry args={[0.3, 0.3, 0.3, 4, 4, 4]} />;
-              case "sphere":
-                return <sphereBufferGeometry args={[0.3, 12, 10]} />;
-              default:
-                return <boxBufferGeometry args={[0.3, 0.3, 0.3]} />;
-            }
-          })()}
-          {meshNormalMaterial}
-        </mesh>
+          <mesh
+            key={i}
+            position={[
+              (Math.random() - 0.5) * 15,
+              (Math.random() - 0.5) * 15,
+              (Math.random() - 0.5) * 15,
+            ]}
+            rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
+            scale={[randomSize, randomSize, randomSize]}
+          >
+            {(() => {
+              switch (meshType) {
+                case "torus":
+                  return <torusBufferGeometry args={[0.3, 0.1, 10, 25]} />;
+                case "box":
+                  return <boxBufferGeometry args={[0.3, 0.3, 0.3, 4, 4, 4]} />;
+                case "sphere":
+                  return <sphereBufferGeometry args={[0.3, 12, 10]} />;
+                default:
+                  return <boxBufferGeometry args={[0.3, 0.3, 0.3]} />;
+              }
+            })()}
+            {meshNormalMaterial}
+          </mesh>
+        </Float>
       );
     });
   };
 
-  const donuts = generateMeshes("torus", 110);
-  const cubes = generateMeshes("box", 110);
-  const sphere = generateMeshes("sphere", 110);
+  const donuts = generateMeshes("torus", 118);
+  const cubes = generateMeshes("box", 118);
+  const sphere = generateMeshes("sphere", 118);
 
   return (
     <Canvas
@@ -64,7 +73,7 @@ export default function Experience() {
           bevelOffset={0}
           bevelSegments={5}
         >
-          Amor fati
+          Amor Fati
           <meshNormalMaterial />
         </Text3D>
       </Center>
