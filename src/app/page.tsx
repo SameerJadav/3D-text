@@ -1,10 +1,19 @@
+import { Suspense } from "react";
 import Experience from "~/components/Experience";
 
 export default function Home() {
   return (
     <main>
-      <div className="fixed left-0 top-0 h-screen w-screen overflow-hidden">
-        <Experience />
+      <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center overflow-hidden bg-black">
+        <Suspense
+          fallback={
+            <p className="animate-pulse text-3xl uppercase text-white">
+              loading...
+            </p>
+          }
+        >
+          <Experience />
+        </Suspense>
       </div>
       <div className="flex justify-center">
         <div className="fixed bottom-0 flex w-max flex-col gap-1 p-4 text-white antialiased md:right-0">
